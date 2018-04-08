@@ -1,6 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#094FA4</color>
+    <color name="colorPrimaryDark">#006EC1</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="bbva1">#094FA4</color>
+    <color name="bbva2">#006EC1</color>
+    <color name="bbva3">#009EE5</color>
+    <color name="bbva4">#52BCEC</color>
+    <color name="bbva5">#89D1F3</color>
+    <color name="bbva6">#B5E5F9</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="alertBackground">#F7E9E9</color>
+    <color name="infoBackground">#d9edf7</color>
+    <color name="alertTextColor">#9D004A</color>
+    <color name="translucentBlack">#80000000</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
 </resources>

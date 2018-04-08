@@ -1,8 +1,11 @@
 package com.bbvacontinental.productosbbva.domain;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 
 import com.bbvacontinental.productosbbva.db.contract.ProductContract;
+
+import java.text.ParseException;
 
 /**
  * Created by johnlopezvega on 4/04/18.
@@ -13,6 +16,18 @@ public class Product {
     private String name;
     private String description;
     private String quantity;
+
+    public Product() {
+
+    }
+
+    public Product(Cursor cursor) throws ParseException {
+        super();
+        code = cursor.getString(cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_NAME_CODE));
+        name = cursor.getString(cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_NAME_NAME));
+        description = cursor.getString(cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_NAME_DESCRIPTION));
+        quantity = cursor.getString(cursor.getColumnIndex(ProductContract.ProductEntry.COLUMN_NAME_QUANTITY));
+    }
 
     public String getCode() {
         return code;

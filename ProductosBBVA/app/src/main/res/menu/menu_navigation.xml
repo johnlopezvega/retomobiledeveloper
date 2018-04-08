@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="OPERACIONES">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_update_products"
+                    android:icon="@drawable/ic_menu_chat"
+                    android:title="Actualizar productos" />
+
+                <item
+                    android:id="@+id/item_delete_products"
+                    android:icon="@drawable/ic_menu_chat"
+                    android:title="Eliminar todos" />
+            </group>
+        </menu>
+    </item>
+
+    <item android:title="TRANFERENCIAS">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_transfers_own"
+                    android:icon="@drawable/ic_menu_chat"
+                    android:title="Transferencias propias" />
+
+                <item
+                    android:id="@+id/item_transfers_others"
+                    android:icon="@drawable/ic_menu_chat"
+                    android:title="Transferencias a terceros" />
+
+                <item
+                    android:id="@+id/item_transfers_interbank"
+                    android:icon="@drawable/ic_menu_chat"
+                    android:title="Transferencias interbancarias" />
+            </group>
+        </menu>
+    </item>
+</menu>
