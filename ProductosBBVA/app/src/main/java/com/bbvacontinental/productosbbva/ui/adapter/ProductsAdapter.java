@@ -24,6 +24,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
         this.productList = productList;
     }
 
+    public void setProductList(List<Product> productList) {
+        this.productList = productList;
+    }
+
     @Override
     public ProductsViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_product, parent, false);
@@ -41,6 +45,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.Produc
     @Override
     public int getItemCount() {
         return productList.size();
+    }
+
+    public List<Product> getProductList() {
+        return productList;
     }
 
     public static class ProductsViewHolder extends RecyclerView.ViewHolder {

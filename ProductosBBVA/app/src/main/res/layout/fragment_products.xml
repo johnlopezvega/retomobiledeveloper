@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <Button
+        android:id="@+id/buttonUpdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Actualizar"/>
@@ -14,7 +15,9 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/listProducts">
+        android:id="@+id/listProducts"
+        android:clipToPadding="false"
+        android:overScrollMode="never">
 
     </android.support.v7.widget.RecyclerView>
 

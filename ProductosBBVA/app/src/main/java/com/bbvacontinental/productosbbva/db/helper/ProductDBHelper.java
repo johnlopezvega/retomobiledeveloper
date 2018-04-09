@@ -81,6 +81,12 @@ public class ProductDBHelper extends SQLiteOpenHelper {
                 ProductContract.ProductEntry._ID + " IN (" + new String(new char[ids.length - 1]).replace("\0", "?,") + "?)", ids);
     }
 
+    public int deleteByCode(String code) {
+        return getWritableDatabase().delete(
+                ProductContract.ProductEntry.TABLE_NAME,
+                ProductContract.ProductEntry.COLUMN_NAME_CODE + " LIKE ?", new String[]{code});
+    }
+
     public int update(Product product, String id) {
         return getWritableDatabase().update(
                 ProductContract.ProductEntry.TABLE_NAME, product.toContentValues(),

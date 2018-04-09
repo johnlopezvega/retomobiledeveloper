@@ -39,6 +39,11 @@ public class ProductsPresenter extends BasePresenter<IProductView> implements Ca
         call.enqueue(this);
     }
 
+    public void deleteProduct(String code) {
+        productDBHelper.deleteByCode(code);
+        productDBHelper.close();
+    }
+
     public void printProducts() {
         Cursor c = productDBHelper.getAll();
         List<Product> productList = new ArrayList<>();
@@ -59,15 +64,14 @@ public class ProductsPresenter extends BasePresenter<IProductView> implements Ca
     @Override
     public void onResponse(Call<ListProductResponse> call, Response<ListProductResponse> response) {
         if (response.isSuccessful()) {
-            List<Product> productList = new ArrayList<>();
-
             List<String> ids = new ArrayList<>();
             Cursor c = productDBHelper.getAll();
             if (c != null) {
                 while (c.moveToNext()) {
                     ids.add(c.getString(0));
                 }
-                productDBHelper.delete(ids.toArray(new String[ids.size()]));
+                if (ids.size() > 0)
+                    productDBHelper.delete(ids.toArray(new String[ids.size()]));
             }
 
             for (ProductResponse productResponse: response.body().getListProducts()) {
@@ -79,6 +83,7 @@ public class ProductsPresenter extends BasePresenter<IProductView> implements Ca
                 productDBHelper.save(product);
             }
             productDBHelper.close();
+            printProducts();
         } else {
             view.error();
         }
