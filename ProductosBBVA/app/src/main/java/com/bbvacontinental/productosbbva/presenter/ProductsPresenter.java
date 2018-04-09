@@ -50,10 +50,10 @@ public class ProductsPresenter extends BasePresenter<IProductView> implements Ca
         if (c != null) {
             while (c.moveToNext()) {
                 Product product = new Product();
-                product.setCode(c.getString(0));
-                product.setName(c.getString(1));
-                product.setDescription(c.getString(2));
-                product.setQuantity(c.getString(3));
+                product.setCode(c.getString(1));
+                product.setName(c.getString(2));
+                product.setDescription(c.getString(3));
+                product.setQuantity(c.getString(4));
                 productList.add(product);
             }
             view.printListProduct(productList);

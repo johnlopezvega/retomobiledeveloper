@@ -93,4 +93,11 @@ public class ProductDBHelper extends SQLiteOpenHelper {
                 ProductContract.ProductEntry._ID + " LIKE ?", new String[]{id}
         );
     }
+
+    public int updateByCode(Product product, String code) {
+        return getWritableDatabase().update(
+                ProductContract.ProductEntry.TABLE_NAME, product.toContentValues(),
+                ProductContract.ProductEntry.COLUMN_NAME_CODE + " LIKE ?", new String[]{code}
+        );
+    }
 }

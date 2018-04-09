@@ -3,6 +3,7 @@ package com.bbvacontinental.productosbbva.ui.fragment;
 
 import android.database.Cursor;
 import android.graphics.Canvas;
+import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import com.bbvacontinental.productosbbva.io.request.ListProductRequest;
 import com.bbvacontinental.productosbbva.io.response.ListProductResponse;
 import com.bbvacontinental.productosbbva.presenter.BasePresenter;
 import com.bbvacontinental.productosbbva.presenter.ProductsPresenter;
+import com.bbvacontinental.productosbbva.ui.activity.BaseActivity;
 import com.bbvacontinental.productosbbva.ui.adapter.ProductsAdapter;
 import com.bbvacontinental.productosbbva.ui.swipe.IProductSwipe;
 import com.bbvacontinental.productosbbva.ui.swipe.ProductSwipe;
@@ -52,7 +54,7 @@ public class ProductsFragment extends BaseFragment<ProductsPresenter> implements
     }
 
     @Override
-    protected void setupView(View view) {
+    protected void setupView(final View view) {
         setHasOptionsMenu(true);
         getPresenter().setContext(getActivity());
         productsAdapter = new ProductsAdapter(new ArrayList<Product>());
@@ -67,6 +69,16 @@ public class ProductsFragment extends BaseFragment<ProductsPresenter> implements
                 productsAdapter.getProductList().remove(position);
                 productsAdapter.notifyItemRemoved(position);
                 productsAdapter.notifyItemRangeChanged(position, productsAdapter.getItemCount());
+            }
+
+            @Override
+            public void onLeftClicked(int position) {
+                Product product = productsAdapter.getProductList().get(position);
+                EditProductFragment editProductFragment = EditProductFragment.newInstance();
+                Bundle bundle = new Bundle();
+                bundle.putParcelable("product", product);
+                editProductFragment.setArguments(bundle);
+                ((BaseActivity) CONTEXT).replaceFragment(R.id.content, editProductFragment, true, false);
             }
         });
 
